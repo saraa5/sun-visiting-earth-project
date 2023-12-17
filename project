@@ -1,0 +1,41 @@
+#include <iostream>
+#include <cmath>
+
+// Constants
+const double G = 6.674e-11; // Gravitational constant
+const double Msun = 1.989e30; // Mass of the Sun in kg
+const double Mearth = 5.972e24; // Mass of the Earth in kg
+const double initialDistance = 149.6e9; // Initial distance between Earth and Sun in meters
+
+// Function to calculate the force of gravity
+double gravitationalForce(double r) {
+    return G * Msun * Mearth / (r * r);
+}
+
+// Function to calculate the centripetal force
+double centripetalForce(double r, double v) {
+    return Mearth * v * v / r;
+}
+
+int main() {
+    double r = initialDistance; // Initial distance between Earth and Sun
+    double v = sqrt(G * Msun / r); // Initial orbital velocity assuming circular orbit
+
+    double sunMovement = 1e7; // Example: Sun moves 10,000,000 meters towards Earth
+
+    double newDistance = r - sunMovement; // New distance after Sun's movement
+    double newVelocity = sqrt(G * Msun / newDistance); // New orbital velocity to maintain orbit
+
+    double acceleration = (newVelocity - v) / 1; // Example: Calculating acceleration in 1 unit of time
+
+    // Calculate the adjustment in position to counteract Sun's movement
+    double newPosition = r + (v * 1) + (0.5 * acceleration * 1 * 1);
+
+    std::cout << "Initial distance between Earth and Sun: " << initialDistance << " meters\n";
+    std::cout << "New distance between Earth and Sun after Sun's movement: " << newDistance << " meters\n";
+    std::cout << "Earth's new position to counteract Sun's movement after 1 unit of time: " << newPosition << " meters\n";
+
+    return 0;
+}
+
+
