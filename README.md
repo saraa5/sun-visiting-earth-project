@@ -1,1 +1,0 @@
-# sun-visiting-earth-project
